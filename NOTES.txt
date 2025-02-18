@@ -1,0 +1,32 @@
+1)Practical Code Start 
+2)VS code 
+3)Simple 
+4)Task assign
+
+
+1)Simple Profile Card
+	1)name 
+	2)image
+	3)Destination 
+	4)Collage  name 
+	5)Hoppies
+
+
+
+
+
+
+1)repo setup
+2)link (local --> remote place)
+3)commit and push
+
+GIT HUB SETUP:-
+git config --global user.name "rc-balaji"
+git config --global user.email "rcbalaji2003@gmail.com"
+
+git init
+git add .
+
+git commit -m "Initial Commit"
+
+git push origin main
