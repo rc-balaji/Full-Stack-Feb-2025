@@ -38,3 +38,12 @@ new_arr = ["sasa", "asas", "asasadf", "ass"];
 new_arr.forEach((num, index) => {
   console.log(num, index);
 });
+
+var menu = [
+  {
+    name: "Rice combo- large",
+    desc: "37% off on the new 1 Rice + 2 HC + 1 Pepsi Lunch Special!old price",
+    price: "248",
+    imageUrl: "./image1.png",
+  },
+];

@@ -30,3 +30,16 @@ git add .
 git commit -m "Initial Commit"
 
 git push origin main
+
+
+day -3
+
+var menu = [
+  {
+    name: "Rice combo- large",
+    desc: "37% off on the new 1 Rice + 2 HC + 1 Pepsi Lunch Special!old price",
+    price: "248",
+    imageUrl: "./image1.png",
+	
+  },
+];
