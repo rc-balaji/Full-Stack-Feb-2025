@@ -43,3 +43,36 @@ var menu = [
 	
   },
 ];
+
+
+Day-4
+
+// console.log(data);
+
+// var a = 10;
+
+// var b = 20;
+
+// var res = a + " + " + b + " = " + (a + b);
+// var Tempres = ` ${a} + ${b}  = ${a + b} `;
+
+// var vstr = `auyygduyg duycgquye d
+//       qwicehiqehuiqchbeiuh
+//          wqecqwebcq7wetgqbw
+//         `;
+
+// console.log(vstr);
+
+//  10 + 20  = 30
+
+var container = document.getElementById("container");
+
+console.log(container);
+
+let text = "Hello World";
+
+// container.innerText = text;
+
+let button = "<button>Click 0</button>";
+
+// container.innerHTML = button;
