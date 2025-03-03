@@ -3,6 +3,11 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+    cursor: url('./cursor.png') , auto;
+}
+
 
 
 .section{
@@ -18,14 +23,21 @@
 
 }
 
+
+
 .nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background: #381DCF;
+    padding: 5px;
     background: linear-gradient(to top right, #381DCF 20%, #CF1512 100%);
-
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 1%;
+    border-radius: 20px;
+    /* Floating */
+    position: fixed;
+    
 }
 
 
@@ -40,7 +52,9 @@
 
 
 .logo{
-    height: 120px;
+    height: 100px;
+    border-radius: 20px;
+    
 
 }
 
@@ -49,7 +63,6 @@
     font-size: 23px;
     margin: 30px;
     color: white;
-    cursor: pointer;
 }
 
 .list:hover {
@@ -70,3 +83,4 @@ a:hover {
     text-decoration: none;
     cursor: pointer;
 }
+
