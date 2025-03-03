@@ -69,6 +69,13 @@ var data = [
     college: "Harvard Business School",
     hobbies: ["startups", "investing", "sports"],
   },
+  {
+    imageUrl: "./icon.png",
+    name: "Manoj2",
+    destination: "Entrepreneu22r",
+    college: "Harvard Business 2222School",
+    hobbies: ["startups", "investing", "sports", "TV"],
+  },
 ];
 
 function makeTemplate(item) {

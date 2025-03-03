@@ -1,35 +1,12 @@
-import Home from "./Home.js";
-import About from "./About.js";
-import Contact from "./Contact.js";
-import Card from "./Card.js";
+import Carddata from "./cardData.js";
+import Card from "./makeTemplate.js";
 
-let root = document.getElementById("root");
+var container = document.getElementById("container");
 
-var template = `
-${About()}
-    ${Home()}
-    ${Contact()}
+let finalTemplate = "";
 
-    ${Card("Sam", "Software Developer")}
-    ${Card("Arun", " Engineer")}
-    ${Card("Arun", " Engineer")}
-    ${Card("Arun", " Engineer")}
-    ${Card("Arun", " Engineer")}
-    ${Card("Arun", " Engineer")}
-    ${Card("Arun", " Engineer")}
-    ${Card("Arun", " Engineer")}
-    ${Card("Arun", " Engineer")}
-    ${Card("Arun", " Engineer")}
-    ${Card("Arun", " Engineer")}
-    ${Card("Arun", " Engineer")}
-    ${Card("Arun", " Engineer")}
-    ${Card("Arun", " Engineer")}
-    ${Card("Arun", " Engineer")}
-    ${Card("Arun", " Engineer")}
-    ${Card("Arun", " Engineer")}
-    ${Card("Arun", " Engineer")}
-    ${Card("Arun", " Engineer")}
+for (let i = 0; i < Carddata.length; i++) {
+  finalTemplate = finalTemplate + Card(Carddata[i]);
+}
 
-`;
-
-root.innerHTML = template;
+container.innerHTML = finalTemplate;

@@ -1,19 +1,25 @@
-export default function makeTemplate(item) {
+export default function Card({
+  imageUrl,
+  name,
+  destination,
+  college,
+  hobbies,
+}) {
   return `
 <div class="card">
-        <div class="img-div"><img class="img" src="${item.imageUrl}" alt="">
+        <div class="img-div"><img class="img" src="${imageUrl}" alt="">
             Google
         </div>
         <div class="details">
             <div class="pers-details">
-                <h3 class="name">${item.name}</h3>
-                <h5 class="dest">${item.destination}</h5>
+                <h3 class="name">${name}</h3>
+                <h5 class="dest">${destination}</h5>
             </div>
-            <p class="college-name">College Name : ${item.college}</p>
+            <p class="college-name">College Name : ${college}</p>
             <div class="hoppies">
                 <h3>Hoppies:-</h3>
                 <ol class="list">
-                    ${item.hobbies.map((hoppy) => `<li>${hoppy}</li>`).join("")}
+                    ${hobbies.map((hoppy) => `<li>${hoppy}</li>`).join("")}
                 </ol>
             </div>
             <button class="btn">Click</button>
