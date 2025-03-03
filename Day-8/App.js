@@ -1,8 +1,9 @@
 import Section from "./Section.js";
-// import { NavBar } from "./NavBar.js";
+import NavBar from "./NavBar.js";
 
 function App() {
   return `
+    ${NavBar()}
     <div>
         ${Section("home", "Home")}
         ${Section("about", "About")}
