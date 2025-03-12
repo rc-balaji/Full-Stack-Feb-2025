@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <h1>Count : </h1>
+    <h1 id="number">0</h1>
+
+
+
+    <button id="btn1">INC</button>
+    <button id="btn2">DEC</button>
+
+
+    <script>
+        var number = document.getElementById('number')
+        var btn1 = document.getElementById('btn1')
+        var btn2 = document.getElementById('btn2')
+
+
+        btn1.addEventListener('click', () => {
+            var prev = number.innerText
+            console.log(prev)
+            number.innerText = Number(prev) + 1
+        })
+        btn2.addEventListener('click', () => {
+
+            var prev = number.innerText
+            if (prev == 0) return
+            console.log(prev)
+            number.innerText = Number(prev) - 1
+        })
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>

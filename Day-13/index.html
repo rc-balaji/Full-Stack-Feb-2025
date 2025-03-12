@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+
+
+</head>
+
+<body>
+
+    <div id="div" class=" m-[30px] w-[800px] h-[300px]  border-solid border-[3px]  border-[red] flex items-center">
+
+        <p id="car" class="text-[120px]">🚋</p>
+
+    </div>
+
+
+    <div class="flex justify-between m-[30px] w-[800px] border p-[30px]">
+        <button id="start" class="border p-8 bg-[red] rounded-[50%] ">Start</button>
+        <button id="stop" class="border p-8 bg-[#15ff00] rounded-[50%]">Stop</button>
+        <button id="reset" class="border p-8 bg-[#ffee00] rounded-[50%]">Reset</button>
+    </div>
+
+
+    <script>
+
+
+        var start = document.getElementById('start')
+        var stop = document.getElementById('stop')
+        var reset = document.getElementById('reset')
+
+        var car = document.getElementById('car')
+
+        var time_interval = null;
+        var margin = 0;
+
+        start.addEventListener('click', () => {
+
+            if (time_interval) return
+            time_interval = setInterval(() => {
+                margin += 20
+                if (margin > 600)
+                    return
+                car.style.marginLeft = margin + "px"
+                console.log("Running")
+
+            }, 500)
+        })
+        stop.addEventListener('click', () => {
+
+            clearInterval(time_interval)
+            time_interval = null
+        })
+        reset.addEventListener('click', () => {
+            margin = 0
+            clearInterval(time_interval)
+            time_interval = null
+            car.style.marginLeft = margin + "px"
+        })
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        :root {
+            --font-size: 50px
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: orange;
+        }
+
+        .div {
+            width: 300px;
+            height: 500px;
+            background-color: beige;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            margin: 20px;
+            gap: 100px;
+
+        }
+
+        .h1 {
+
+            font-size: var(--font-size);
+
+        }
+
+        .players {
+            font-size: var(--font-size);
+        }
+
+        .btn {
+            width: 80%;
+            padding: 10px 0px;
+            border-radius: 10px;
+            background-color: orange;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        .btn:active {
+            transform: scale(0.9)
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="div">
+
+        <h1 class="h1">Match</h1>
+
+        <p id="players" class="players">🤖 vs 🙀</p>
+
+
+
+
+        <button onclick="change()" class="btn">Start</button>
+
+        <script>
+
+            var players = document.getElementById('players')
+
+            const emojis = [
+                "😀", "😂", "😍", "😎", "😭", // Smileys & Emotion
+                "🐶", "🐱", "🦁", "🐼", "🐸", // Animals
+                "🍕", "🍔", "🍎", "🍩", "🍉", // Food & Drink
+                "⚽", "🏀", "🏈", "🎾", "🏆", // Sports
+                "🚗", "✈️", "🚀", "🚲", "🚢", // Travel & Transport
+                "🎸", "🎻", "🎺", "🥁", "🎤", // Music & Arts
+                "❤️", "💔", "🔥", "🌟", "💯", // Symbols
+                "⌚", "📱", "💻", "🖥️", "🎮", // Technology
+            ];
+
+
+            function getEmoji() {
+                let max = emojis.length - 1;
+                let min = 0;
+
+
+
+                let random_index = Math.floor(Math.random() * (max - min)) + min;
+
+                return emojis[random_index]
+
+            }
+
+
+            function playerAssign() {
+                let player1 = getEmoji()
+                let player2 = getEmoji()
+
+                players.innerText = `${player1} vs ${player2}`
+            }
+
+            function change() {
+
+                let count = 1
+
+                const timeInterval = setInterval(() => {
+                    switch (count) {
+                        case 1:
+                            players.innerText = "3"
+                            break
+                        case 2:
+                            players.innerText = "2"
+                            break
+                        case 3:
+                            players.innerText = "1"
+                            break
+                        case 4:
+                            players.innerText = "Get Ready!!!"
+                            break
+                        case 5:
+                            playerAssign()
+                            break
+                    }
+                    count++
+                    console.log(count)
+                }, 1000)
+
+
+                const timeout = setTimeout(() => {
+                    clearInterval(timeInterval)
+                }, 5000)
+
+
+                //     clearTimeout(timeout)
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+        </script>
+
+
+    </div>
+
+</body>
+
+</html>

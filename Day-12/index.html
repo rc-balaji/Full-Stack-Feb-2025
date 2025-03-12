@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+
+            border: 1px solid black;
+        }
+
+        .light {
+
+            background-color: antiquewhite;
+        }
+
+        .dark {
+            background-color: rgb(0, 0, 0);
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <div id="div" class="">
+
+
+
+
+    </div>
+
+
+    <button onclick="toggle()">Toggle Switch </button>
+
+
+    <script>
+
+        const div = document.getElementById('div')
+
+        let isLight = true
+
+
+        function toggle() {
+
+            isLight = !isLight
+
+            if (isLight) {
+                div.className = "box light"
+            } else {
+                div.className = "box dark"
+            }
+
+        }
+
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>
