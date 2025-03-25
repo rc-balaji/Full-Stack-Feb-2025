@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <h1>Promises</h1>
+
+
+    <script>
+
+        async function getData() {
+
+            let promise = new Promise((res, rej) => {
+                res("Promised Called")
+            })
+
+            let data = await promise;
+
+
+
+            console.log(data)
+        }
+
+        console.log("Start")
+
+
+
+        setTimeout(() => {
+            console.log("Settimed Callled")
+        }, 0)
+
+        getData()
+
+
+
+
+        console.log("End")
+    </script>
+</body>
+
+</html>

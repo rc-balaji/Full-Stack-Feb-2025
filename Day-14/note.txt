@@ -1,0 +1,58 @@
+JS is a Sync programming language
+    - Doesnt Wait for everything
+    - line by line execution 
+
+    ---- 1 - 1
+    ---- 2 - 4  - sec
+    ----- 3
+
+
+Promise  :-
+
+    it is a Asynchrnous Funtion that will allows us to resolve some particular task even in future
+    either resolve or reject 
+
+
+API :-
+    --- Application Program Interface
+    --- bridge or intermedite  between 2 software programs
+    ---  URL like 
+    ---  GET POST PUT DELETE BATCH 
+
+
+fetch()  - used for APi call
+
+
+address
+: 
+"492 Lynn Isle"
+company
+: 
+"Luettgen - Heathcote"
+country
+: 
+"Namibia"
+email
+: 
+"Domenick20@hotmail.com"
+id
+: 
+1
+name
+: 
+"Marisa Cole"
+phone
+: 
+"1-995-679-1217 x206"
+photo
+: 
+"https://json-server.dev/ai-profiles/75.png"
+state
+: 
+"Michigan"
+username
+: 
+"Adolphus_Balistreri"
+zip
+: 
+"32063"

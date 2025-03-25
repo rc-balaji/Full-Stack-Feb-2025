@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+</head>
+
+
+
+<body>
+
+
+
+
+    <div class="container  flex flex-wrap ">
+
+
+
+
+    </div>
+
+
+    API call
+
+    <script>
+
+
+        function getTemplate({ name, address, company, email, photo }) {
+
+            return `
+            
+
+            <div class="w-[250px] h-[auto]  p-6 m-6 border ">
+               <img src="${photo}" alt="" srcset="">
+               
+                <p>  ${name} </p>
+
+                <p>${address} </p>
+                <p> ${company}</p>
+
+                <p>${email}</p>
+
+
+            </div>
+            
+            `
+        }
+
+
+        function createCard(data) {
+
+            let container = document.querySelector('.container')
+
+
+            let finalTemp = ""
+
+
+            for (let i = 0; i < data.length; i++)
+
+                finalTemp += getTemplate(data[i])
+
+
+            container.innerHTML = finalTemp
+
+
+
+
+
+        }
+
+        async function fetchData() {
+            try {
+                let response = await fetch('https://fake-json-api.mock.beeceptor.com/users')
+
+                let data = await response.json()
+
+                console.log(data)
+                createCard(data)
+
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+
+        fetchData()
+
+    </script>
+
+</body>
+
+</html>

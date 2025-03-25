@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            margin: 20px;
+            width: 90%;
+            height: 100px;
+            border: 2px solid #5100ff;
+            display: flex;
+            justify-content: space-evenly;
+
+        }
+
+        .btn1 {
+            padding: 15px;
+            background-color: blueviolet;
+            margin: 10px;
+        }
+
+        .btn2 {
+            padding: 15px;
+            background-color: grey;
+            margin: 10px;
+        }
+
+        .btn3 {
+            padding: 15px;
+            background-color: green;
+            margin: 10px;
+        }
+
+        .btn4 {
+            padding: 15px;
+            background-color: red;
+            margin: 10px;
+        }
+
+        .btn5 {
+            padding: 15px;
+            background-color: rgb(255, 255, 255);
+            margin: 10px;
+        }
+
+
+        .circle {
+            width: 70px;
+            height: 70px;
+            margin: 10px;
+            border: 1px solid black;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="circle" id="id1">
+
+        </div>
+        <div class="circle" id="id2"></div>
+        <div class="circle" id="id3"></div>
+        <div class="circle" id="id4"></div>
+        <div class="circle" id="id5"></div>
+        <div class="circle" id="id6"></div>
+    </div>
+
+    <div class="buttons">
+        <button onclick="getRun(this)" class="btn1">1</button>
+        <button onclick="getRun(this)" class="btn2">2</button>
+        <button onclick="getRun(this)" class="btn3">4</button>
+        <button onclick="getRun(this)" class="btn4">6</button>
+        <button onclick="getRun(this)" class="btn5">0</button>
+    </div>
+
+
+    <script>
+        var ball = 1;
+
+        function getRun(el) {
+
+            let run = el.innerText
+            let color = getComputedStyle(el).backgroundColor
+            if (ball > 6) return
+            let current_ball_div = document.getElementById(`id${ball}`)
+
+            current_ball_div.innerText = run
+            current_ball_div.style.backgroundColor = color
+
+            ball++
+
+        }
+
+
+    </script>
+</body>
+
+</html>
