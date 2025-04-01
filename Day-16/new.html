@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Draw-like Application</title>
+
+    <!-- Bootstrap CSS (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome Icons (CDN) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* Custom styles */
+        .canvas-container {
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .tool-buttons {
+            margin-top: 20px;
+        }
+
+        .toolbar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .toolbar button {
+            font-size: 20px;
+            margin: 5px;
+        }
+
+        .canvas {
+            width: 100%;
+            height: 400px;
+        }
+
+        .canvas-container {
+            position: relative;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+
+    <!-- Container for the Application -->
+    <div class="container">
+        <h1 class="text-center mt-5">Code Draw-like Application</h1>
+
+        <!-- Toolbar for Shapes and Tools -->
+        <div class="toolbar">
+            <!-- Tools -->
+            <button id="penTool" class="btn btn-primary">
+                <i class="fas fa-pencil-alt"></i> Pen
+            </button>
+            <button id="rectangleTool" class="btn btn-success">
+                <i class="fas fa-square"></i> Rectangle
+            </button>
+            <button id="circleTool" class="btn btn-warning">
+                <i class="fas fa-circle"></i> Circle
+            </button>
+            <button id="clearCanvas" class="btn btn-danger">
+                <i class="fas fa-eraser"></i> Clear
+            </button>
+        </div>
+
+        <!-- Canvas Area -->
+        <div class="canvas-container">
+            <canvas id="drawCanvas" class="canvas" width="800" height="400"></canvas>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS, Popper, and jQuery (CDN) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        // Get references to canvas and tools
+        const canvas = document.getElementById('drawCanvas');
+        const ctx = canvas.getContext('2d');
+        let currentTool = 'pen'; // Default tool is Pen
+        let isDrawing = false;
+
+        // Store drawn shapes to avoid erasing them when switching tools
+        let drawnShapes = [];
+
+        // Event listeners for mouse
+        let startX, startY;
+
+        // Pen tool
+        const penTool = document.getElementById('penTool');
+        penTool.addEventListener('click', () => currentTool = 'pen');
+
+        // Rectangle tool
+        const rectangleTool = document.getElementById('rectangleTool');
+        rectangleTool.addEventListener('click', () => currentTool = 'rectangle');
+
+        // Circle tool
+        const circleTool = document.getElementById('circleTool');
+        circleTool.addEventListener('click', () => currentTool = 'circle');
+
+        // Clear canvas
+        const clearCanvasButton = document.getElementById('clearCanvas');
+        clearCanvasButton.addEventListener('click', () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawnShapes = []; // Clear all stored shapes
+        });
+
+        // Drawing functionality
+        canvas.addEventListener('mousedown', (e) => {
+            isDrawing = true;
+            startX = e.offsetX;
+            startY = e.offsetY;
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (!isDrawing) return;
+            const currentX = e.offsetX;
+            const currentY = e.offsetY;
+
+            switch (currentTool) {
+                case 'pen':
+                    // Drawing pen (free drawing)
+                    ctx.lineWidth = 2;
+                    ctx.lineCap = 'round';
+                    ctx.strokeStyle = '#000';
+                    ctx.beginPath();
+                    ctx.moveTo(startX, startY);
+                    ctx.lineTo(currentX, currentY);
+                    ctx.stroke();
+                    startX = currentX;
+                    startY = currentY;
+                    break;
+                case 'rectangle':
+                    // Drawing rectangle
+                    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear previous shape
+                    ctx.strokeStyle = '#000';
+                    ctx.strokeRect(startX, startY, currentX - startX, currentY - startY);
+                    break;
+                case 'circle':
+                    // Drawing circle
+                    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear previous shape
+                    ctx.beginPath();
+                    const radius = Math.sqrt(Math.pow(currentX - startX, 2) + Math.pow(currentY - startY, 2));
+                    ctx.arc(startX, startY, radius, 0, 2 * Math.PI);
+                    ctx.strokeStyle = '#000';
+                    ctx.stroke();
+                    break;
+            }
+        });
+
+        canvas.addEventListener('mouseup', () => {
+            isDrawing = false;
+
+            // Save shape in the drawnShapes array to preserve them when switching tools
+            if (currentTool === 'rectangle') {
+                drawnShapes.push({ type: 'rectangle', x: startX, y: startY, width: canvas.width, height: canvas.height });
+            } else if (currentTool === 'circle') {
+                drawnShapes.push({ type: 'circle', x: startX, y: startY, radius: canvas.width });
+            }
+
+            // Redraw stored shapes after every mouse up
+            redrawShapes();
+        });
+
+        // Redraw all shapes stored in the drawnShapes array
+        function redrawShapes() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawnShapes.forEach(shape => {
+                if (shape.type === 'rectangle') {
+                    ctx.strokeRect(shape.x, shape.y, shape.width, shape.height);
+                } else if (shape.type === 'circle') {
+                    ctx.beginPath();
+                    ctx.arc(shape.x, shape.y, shape.radius, 0, 2 * Math.PI);
+                    ctx.stroke();
+                }
+            });
+        }
+
+        // Prevent the canvas from being selected (dragging)
+        canvas.addEventListener('mousedown', (e) => e.preventDefault());
+    </script>
+
+</body>
+
+</html>
